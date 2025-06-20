@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: nodedb
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql:/var/lib/mysql
+    tty: true
+    networks:
+      - node-network
+
+  node:
+    build: ./node
+    container_name: node
+    restart: always
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    working_dir: /usr/src/app
+    command: sh -c "npm install && node index.js"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=nodedb
+    depends_on:
+      - db
+    networks:
+      - node-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    tty: true
+    depends_on:
+      - node
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge
