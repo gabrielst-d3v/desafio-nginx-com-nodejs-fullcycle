@@ -41,8 +41,8 @@ Este projeto demonstra a utilização do Nginx como proxy reverso para uma aplic
 
 1. Clone este repositório:
     ```bash
-    git clone <url-do-seu-repositorio>
-    cd <pasta-do-projeto>
+    git clone https://github.com/gabrielst-d3v/desafio-nginx-com-nodejs-fullcycle.git
+    cd desafio-nginx-com-nodejs-fullcycle
     ```
 
 2. Suba os containers:
@@ -104,12 +104,6 @@ Ao acessar `http://localhost:8080`, você verá algo assim:
   <li>Full Cycle User 456</li>
   <li>Full Cycle User 789</li>
 </ul>
-Dicas e Solução de Problemas
-Se não conseguir remover a pasta mysql, use sudo rm -rf ./mysql (Linux/macOS) ou altere as permissões com sudo chown -R $USER:$USER ./mysql.
-Se o Node.js não conectar ao banco, aguarde alguns segundos e tente novamente (o MySQL pode demorar para iniciar).
-Para ver os logs dos serviços:
-bash
-Copy Code
-docker-compose logs -f
-Créditos
-Desafio proposto por Full Cycle.
+```
+
+Desafio proposto pela Full Cycle.
