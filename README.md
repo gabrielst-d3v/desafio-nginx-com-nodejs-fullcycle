@@ -48,6 +48,8 @@ Este projeto demonstra a utilização do Nginx como proxy reverso para uma aplic
 2. Suba os containers:
     ```bash
     docker-compose up -d
+    # ou
+    docker compose up -d
     ```
 
 3. Acesse no navegador:
@@ -58,11 +60,15 @@ Este projeto demonstra a utilização do Nginx como proxy reverso para uma aplic
 4. Para parar e remover os containers:
     ```bash
     docker-compose down
+    # ou
+    docker compose down
     ```
 
 5. Para remover também os dados do MySQL:
     ```bash
     docker-compose down -v
+    # ou
+    docker compose down -v
     ```
 
 ## Desenvolvimento
@@ -92,18 +98,5 @@ Este projeto demonstra a utilização do Nginx como proxy reverso para uma aplic
 - Imagem: `nginx:latest`
 - Porta externa: 8080
 - Proxy para o Node.js na porta 3000
-
-## Exemplo de Resposta
-
-Ao acessar `http://localhost:8080`, você verá algo assim:
-
-```html
-<h1>Full Cycle Rocks!</h1>
-<ul>
-  <li>Full Cycle User 123</li>
-  <li>Full Cycle User 456</li>
-  <li>Full Cycle User 789</li>
-</ul>
-```
 
 Desafio proposto pela Full Cycle.
