@@ -2,6 +2,7 @@ services:
   db:
     image: mysql:5.7
     container_name: db
+    command: --innodb-use-native-aio=0
     restart: always
     environment:
       MYSQL_DATABASE: nodedb
@@ -17,10 +18,9 @@ services:
     container_name: node
     restart: always
     volumes:
-      - ./node:/usr/src/app
+      - ./node:/home/node/app
     tty: true
-    working_dir: /usr/src/app
-    command: sh -c "npm install && node index.js"
+    entrypoint: wait-for db:3306 -t 40 -- ./start.sh
     environment:
       - DB_HOST=db
       - DB_USER=root
